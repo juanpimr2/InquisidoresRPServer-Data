@@ -1,5 +1,5 @@
 Config                  = {}
-Config.Locale           = 'en'
+Config.Locale           = 'es'
 
 -- [Config.EnableCommands]
 -- Enables Commands Such As /char and /chardel
@@ -18,13 +18,14 @@ Config.UseSteamID       = false
 -- will not work on. If you don't know a lot about this, I would suggest to set it false for now.
 Config.UseDeferrals     = false -- EXPERIMENTAL Character Registration Method.
 
+-- Config.EnableESXIdentity          = true
 
 -- These values are for the second input validation in server/main.lua
 Config.MaxNameLength    = 16
-Config.MinHeight        = 48
-Config.MaxHeight        = 96
+Config.MinHeight        = 150
+Config.MaxHeight        = 200
 Config.LowestYear       = 1900
-Config.HighestYear      = 2020
+Config.HighestYear      = 2050
 
 Config.FullCharDelete   = false
 Config.EnableDebugging  = false

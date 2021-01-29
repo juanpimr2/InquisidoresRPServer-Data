@@ -2,38 +2,33 @@ fx_version 'adamant'
 
 game 'gta5'
 
-description 'ESX Identity'
+description 'ESX Garage'
 
-version '1.4.0'
+version '1.0.0'
 
 server_scripts {
 	'@es_extended/locale.lua',
-	'@mysql-async/lib/MySQL.lua',
+	'locales/de.lua',
+	'locales/br.lua',
 	'locales/en.lua',
 	'locales/es.lua',
-	'locales/cs.lua',
+	'locales/fr.lua',
+	'locales/sv.lua',
 	'locales/pl.lua',
+	'@mysql-async/lib/MySQL.lua',
 	'config.lua',
 	'server/main.lua'
 }
 
 client_scripts {
 	'@es_extended/locale.lua',
+	'locales/de.lua',
+	'locales/br.lua',
 	'locales/en.lua',
 	'locales/es.lua',
-	'locales/cs.lua',
+	'locales/fr.lua',
+	'locales/sv.lua',
 	'locales/pl.lua',
 	'config.lua',
 	'client/main.lua'
 }
-
-ui_page 'html/index.html'
-
-files {
-	'html/index.html',
-	'html/js/script.js',
-	'html/css/style.css',
-	-- 'html/img/esx_identity.png'
-}
-
-dependency 'es_extended'
