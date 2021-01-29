@@ -81,11 +81,11 @@ local Keys = {
                           end
                           havebike = false
                       else
-                          if Config.EnableEffects then
-                              ESX.ShowNotification(_U('notabike'))
-                          else
-                              TriggerEvent("chatMessage", _U('bikes'), {255,255,0}, _U('notabike'))
-                          end
+                        --   if Config.EnableEffects then
+                        --       ESX.ShowNotification(_U('notabike'))
+                        --   else
+                        --       TriggerEvent("chatMessage", _U('bikes'), {255,255,0}, _U('notabike'))
+                        --   end
                       end 		
                   end
               elseif distance < 1.45 then
