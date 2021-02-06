@@ -27,9 +27,9 @@ local femaleHash = GetHashKey("mp_f_freemode_01")
 local maleHash = GetHashKey("mp_m_freemode_01")
 local IsLockpicking    = false
 
--- Sätt på handklovar
-RegisterNetEvent('esx_handcuffs:cuff')
-AddEventHandler('esx_handcuffs:cuff', function()
+-- Poner Esposas
+RegisterNetEvent('esx_rope:cuff')
+AddEventHandler('esx_rope:cuff', function()
     ped = GetPlayerPed(-1)
     RequestAnimDict(dict)
 
@@ -45,15 +45,16 @@ AddEventHandler('esx_handcuffs:cuff', function()
             SetPedComponentVariation(ped, 7, 41, 0, 0)
         end
 
-        SetEnableHandcuffs(ped, true)
+        SetEnablerope(ped, true)
         TaskPlayAnim(ped, dict, anim, 8.0, -8, -1, flags, 0, 0, 0, 0)
 
     cuffed = not cuffed
     changed = true
 end)
---- Uncufing
-RegisterNetEvent('esx_handcuffs:uncuff')
-AddEventHandler('esx_handcuffs:uncuff', function()
+
+-- Ta av handklovar
+RegisterNetEvent('esx_rope:uncuff')
+AddEventHandler('esx_rope:uncuff', function()
     ped = GetPlayerPed(-1)
     RequestAnimDict(dict)
 
@@ -62,7 +63,7 @@ AddEventHandler('esx_handcuffs:uncuff', function()
     end
 
         ClearPedTasks(ped)
-        SetEnableHandcuffs(ped, false)
+        SetEnablerope(ped, false)
         UncuffPed(ped)
 
         if GetEntityModel(ped) == femaleHash then -- mp female
@@ -76,33 +77,48 @@ AddEventHandler('esx_handcuffs:uncuff', function()
     changed = true
 end)
 
-RegisterNetEvent('esx_handcuffs:cuffcheck')
-AddEventHandler('esx_handcuffs:cuffcheck', function()
+RegisterNetEvent('esx_rope:cuffcheck')
+AddEventHandler('esx_rope:cuffcheck', function()
   local player, distance = ESX.Game.GetClosestPlayer()
   if distance ~= -1 and distance <= 3.0 then
   				  RequestAnimDict("amb@prop_human_bum_bin@idle_b")
 				  TaskPlayAnim(ped,"amb@prop_human_bum_bin@idle_b","idle_d",100.0, 200.0, 0.3, 120, 0.2, 0, 0, 0, 130)
-								ESX.ShowNotification('~g~You have used your handcuffs')
+								ESX.ShowNotification('~g~You have used your rope')
 				Wait(8000)
-		TriggerServerEvent('esx_policejob:handcuff', GetPlayerServerId(player))
+		TriggerServerEvent('esx_policejob:rope', GetPlayerServerId(player))
+				ESX.ShowNotification('~r~Person dragged/UnDragged')
+  else
+    ESX.ShowNotification('No players nearby')
+	end
+end)
+
+RegisterNetEvent('esx_rope:ropecheck')
+AddEventHandler('esx_rope:ropecheck', function()
+  local player, distance = ESX.Game.GetClosestPlayer()
+  if distance ~= -1 and distance <= 3.0 then
+  				  RequestAnimDict("amb@prop_human_bum_bin@idle_b")
+				  TaskPlayAnim(ped,"amb@prop_human_bum_bin@idle_b","idle_d",100.0, 200.0, 0.3, 120, 0.2, 0, 0, 0, 130)
+								ESX.ShowNotification('~g~You have used your rope')
+				Wait(8000)
+		TriggerServerEvent('esx_policejob:drag', GetPlayerServerId(player))
 				ESX.ShowNotification('~r~Person Cuffed/UnCuffed')
   else
     ESX.ShowNotification('No players nearby')
 	end
 end)
 
-RegisterNetEvent('esx_handcuffs:nyckelcheck')
-AddEventHandler('esx_handcuffs:nyckelcheck', function()
+RegisterNetEvent('esx_rope:nyckelcheck')
+AddEventHandler('esx_rope:nyckelcheck', function()
 	local player, distance = ESX.Game.GetClosestPlayer()
   if distance ~= -1 and distance <= 3.0 then
-      TriggerServerEvent('esx_handcuffs:unlocking', GetPlayerServerId(player))
+      TriggerServerEvent('esx_rope:unlocking', GetPlayerServerId(player))
   else
     ESX.ShowNotification('No players nearby')
 	end
 end)
 
-RegisterNetEvent('esx_handcuffs:unlockingcuffs')
-AddEventHandler('esx_handcuffs:unlockingcuffs', function()
+RegisterNetEvent('esx_rope:unlockingcuffs')
+AddEventHandler('esx_rope:unlockingcuffs', function()
   local player, distance = ESX.Game.GetClosestPlayer()
 	local ped = GetPlayerPed(-1)
 
@@ -124,10 +140,10 @@ AddEventHandler('esx_handcuffs:unlockingcuffs', function()
 
 		ClearPedTasksImmediately(ped)
 
-		TriggerServerEvent('esx_policejob:handcuff', GetPlayerServerId(player))
-		ESX.ShowNotification('Handcuffs unlocked')
+		TriggerServerEvent('esx_policejob:rope', GetPlayerServerId(player))
+		ESX.ShowNotification('rope unlocked')
 	else
-		ESX.ShowNotification('Your are already lockpicking handcuffs')
+		ESX.ShowNotification('Your are already lockpicking rope')
 	end
 end)
 

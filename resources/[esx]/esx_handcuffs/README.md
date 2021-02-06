@@ -1,6 +1,6 @@
 # esx_handcuffs
 # Example of implementation (esx_policejob)
-
+# THIS RESOURCE WAS MODIFIED BY KRIZFROST
 Client
 ```
     if data2.current.value == 'handcuff' then
@@ -27,3 +27,6 @@ Server
 
 # Based on:
 # https://github.com/TomGrobbe/Realistic-Handcuffs-FiveM
+# as welll as 
+# https://github.com/scorpio686/esx_handcuffs
+# I KRIZ FROST TAKE 0 CREDIT FOR ANYTHING DONE ON HERE ALL I DID WAS CHANGE A FEW THINGS AROUND.

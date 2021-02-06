@@ -5,7 +5,6 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 ----
 ESX.RegisterUsableItem('handcuffs', function(source)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	xPlayer.removeInventoryItem('handcuffs', 1)
 
 	TriggerClientEvent('esx_handcuffs:cuffcheck', source)
 end)

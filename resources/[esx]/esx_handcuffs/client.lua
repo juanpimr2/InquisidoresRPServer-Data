@@ -51,8 +51,7 @@ AddEventHandler('esx_handcuffs:cuff', function()
     cuffed = not cuffed
     changed = true
 end)
-
--- Ta av handklovar
+--- Uncufing
 RegisterNetEvent('esx_handcuffs:uncuff')
 AddEventHandler('esx_handcuffs:uncuff', function()
     ped = GetPlayerPed(-1)
@@ -81,7 +80,12 @@ RegisterNetEvent('esx_handcuffs:cuffcheck')
 AddEventHandler('esx_handcuffs:cuffcheck', function()
   local player, distance = ESX.Game.GetClosestPlayer()
   if distance ~= -1 and distance <= 3.0 then
-    TriggerServerEvent('esx_handcuffs:cuffing', GetPlayerServerId(player))
+  				  RequestAnimDict("amb@prop_human_bum_bin@idle_b")
+				  TaskPlayAnim(ped,"amb@prop_human_bum_bin@idle_b","idle_d",100.0, 200.0, 0.3, 120, 0.2, 0, 0, 0, 130)
+								ESX.ShowNotification('~g~You have used your handcuffs')
+				Wait(8000)
+		TriggerServerEvent('esx_policejob:handcuff', GetPlayerServerId(player))
+				ESX.ShowNotification('~r~Person Cuffed/UnCuffed')
   else
     ESX.ShowNotification('No players nearby')
 	end
@@ -120,7 +124,7 @@ AddEventHandler('esx_handcuffs:unlockingcuffs', function()
 
 		ClearPedTasksImmediately(ped)
 
-		TriggerServerEvent('esx_policejob:unhandcuff', GetPlayerServerId(player))
+		TriggerServerEvent('esx_policejob:handcuff', GetPlayerServerId(player))
 		ESX.ShowNotification('Handcuffs unlocked')
 	else
 		ESX.ShowNotification('Your are already lockpicking handcuffs')
@@ -149,26 +153,6 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
         ped = PlayerPedId()
         if cuffed then
-            DisableControlAction(0, 69, true) -- INPUT_VEH_ATTACK
-            DisableControlAction(0, 92, true) -- INPUT_VEH_PASSENGER_ATTACK
-            DisableControlAction(0, 114, true) -- INPUT_VEH_FLY_ATTACK
-            DisableControlAction(0, 140, true) -- INPUT_MELEE_ATTACK_LIGHT
-            DisableControlAction(0, 141, true) -- INPUT_MELEE_ATTACK_HEAVY
-            DisableControlAction(0, 142, true) -- INPUT_MELEE_ATTACK_ALTERNATE
-            DisableControlAction(0, 257, true) -- INPUT_ATTACK2
-            DisableControlAction(0, 263, true) -- INPUT_MELEE_ATTACK1
-            DisableControlAction(0, 264, true) -- INPUT_MELEE_ATTACK2
-            DisableControlAction(0, 24, true) -- INPUT_ATTACK
-            DisableControlAction(0, 25, true) -- INPUT_AIM
-			DisableControlAction(0, 21, true) -- SHIFT
-			DisableControlAction(0, 22, true) -- SPACE
-			DisableControlAction(0, 288, true) -- F1
-			DisableControlAction(0, 289, true) -- F2
-			DisableControlAction(0, 170, true) -- F3
-			DisableControlAction(0, 167, true) -- F6
-			DisableControlAction(0, 168, true) -- F7
-			DisableControlAction(0, 57, true) -- F10
-			DisableControlAction(0, 73, true) -- X
         end
     end
 end)
