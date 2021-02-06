@@ -856,6 +856,8 @@ ESX.ShowInventory = function()
 		}, function(data1, menu1)
 			local item, type = data1.current.value, data1.current.type
 
+			-- print(item .. ' Sus muerto chava')
+
 			if data1.current.action == 'give' then
 				local playersNearby = ESX.Game.GetPlayersInArea(GetEntityCoords(playerPed), 3.0)
 
@@ -955,6 +957,7 @@ ESX.ShowInventory = function()
 					end
 				end
 			elseif data1.current.action == 'use' then
+				print(item)
 				TriggerServerEvent('esx:useItem', item)
 			elseif data1.current.action == 'return' then
 				ESX.UI.Menu.CloseAll()

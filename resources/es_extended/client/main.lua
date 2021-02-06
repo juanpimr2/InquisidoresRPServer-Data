@@ -43,10 +43,23 @@ AddEventHandler('esx:playerLoaded', function(playerData)
 	SetMaxWantedLevel(0)
 
 	if Config.EnableHud then
-		for k,v in ipairs(playerData.accounts) do
-			local accountTpl = '<div><img src="img/accounts/' .. v.name .. '.png"/>&nbsp;{{money}}</div>'
-			ESX.UI.HUD.RegisterElement('account_' .. v.name, k, 0, accountTpl, {money = ESX.Math.GroupDigits(v.money)})
-		end
+		-- for k,v in ipairs(playerData.accounts) do
+		-- 	local accountTpl = '<div><img src="img/accounts/' .. v.name .. '.png"/>&nbsp;{{money}}</div>'
+		-- 	ESX.UI.HUD.RegisterElement('account_' .. v.name, k, 0, accountTpl, {money = ESX.Math.GroupDigits(v.money)})
+		-- end
+
+		-- Server name
+
+		local serverName = '<div>Inquisidores RP</div>'
+
+		ESX.UI.HUD.RegisterElement('server', #playerData.accounts, 0, serverName, {
+
+			serverName = 'InquisidoresRP',
+			-- job_label = playerData.job.label,
+			-- grade_label = playerData.job.grade_label
+		})
+
+		--Trabajo 
 
 		local jobTpl = '<div>{{job_label}} - {{grade_label}}</div>'
 
@@ -253,6 +266,19 @@ AddEventHandler('esx:setJob', function(job)
 		})
 	end
 end)
+
+
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
+	if Config.EnableHud then
+		ESX.UI.HUD.UpdateElement('job', {
+			job_label = job.label,
+			grade_label = job.grade_label
+		})
+	end
+end)
+
+
 
 RegisterNetEvent('esx:spawnVehicle')
 AddEventHandler('esx:spawnVehicle', function(vehicleName)

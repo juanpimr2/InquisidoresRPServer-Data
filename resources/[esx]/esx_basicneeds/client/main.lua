@@ -39,17 +39,30 @@ end)
 
 AddEventHandler('esx_status:loaded', function(status)
 
-	TriggerEvent('esx_status:registerStatus', 'hunger', 1000000, '#CFAD0F', function(status)
-		return Config.Visible
-	end, function(status)
-		status.remove(100)
-	end)
 
+	TriggerEvent('esx_status:registerStatus', 'hunger', 1000000, '#CFAD0F', function(status)
+		return false
+	end, function(status)
+		status.remove(1000)
+	end)
 	TriggerEvent('esx_status:registerStatus', 'thirst', 1000000, '#0C98F1', function(status)
-		return Config.Visible
+		return false
 	end, function(status)
 		status.remove(75)
 	end)
+
+
+	-- TriggerEvent('esx_status:registerStatus', 'hunger', 1000000, '#CFAD0F', function(status)
+	-- 	return Config.Visible
+	-- end, function(status)
+	-- 	status.remove(100)
+	-- end)
+
+	-- TriggerEvent('esx_status:registerStatus', 'thirst', 1000000, '#0C98F1', function(status)
+	-- 	return Config.Visible
+	-- end, function(status)
+	-- 	status.remove(75)
+	-- end)
 
 	Citizen.CreateThread(function()
 		while true do

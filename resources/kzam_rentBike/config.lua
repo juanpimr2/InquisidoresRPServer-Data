@@ -28,6 +28,5 @@ Config.MarkerZones = {
 
 -- Edit blip titles
 Config.BlipZones = { 
-
    {title="Bikes Rental", colour=2, id=376, x = -238.62, y = -981.74, z = 28.29},
 }
