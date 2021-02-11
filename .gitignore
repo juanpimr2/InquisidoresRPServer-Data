@@ -1,7 +1,4 @@
-*.cfg
+
 /cache/
 /resources/\[local\]/
 /db/
-start-server.bat
-server.cfg
-start-server.bat

@@ -73,7 +73,7 @@ Config.Jobs.fisherman = {
 			Type  = 'vehspawner',
 			Spawner = 2,
 			Hint  = _U('fm_spawnboat'),
-			Caution = 0,
+			Caution = 10,
 			GPS = {x = 4435.21, y = 4829.60, z = 0.34}
 		},
 
@@ -114,7 +114,7 @@ Config.Jobs.fisherman = {
 			Type  = 'vehspawner',
 			Spawner = 1,
 			Hint  = _U('spawn_veh_button'),
-			Caution = 2000,
+			Caution = 10,
 			GPS = {x = 3867.44, y = 4463.62, z = 1.72}
 		},
 

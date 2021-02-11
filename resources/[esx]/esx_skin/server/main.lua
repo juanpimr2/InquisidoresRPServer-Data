@@ -47,7 +47,6 @@ ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
 			skin_male   = xPlayer.job.skin_male,
 			skin_female = xPlayer.job.skin_female
 		}
-
 		if user.skin then
 			skin = json.decode(user.skin)
 		end

@@ -77,6 +77,7 @@ AddEventHandler('esx_jobs:action', function(job, zone, zoneIndex)
 				if v.Type == 'vehspawnpt' and v.Spawner == zone.Spawner then
 					spawnPoint = v
 					spawner = v.Spawner
+					-- print('spawner => ' .. json.encode(jobObject.Zones))
 					break
 				end
 			end
@@ -84,6 +85,7 @@ AddEventHandler('esx_jobs:action', function(job, zone, zoneIndex)
 			for k,v in pairs(jobObject.Vehicles) do
 				if v.Spawner == zone.Spawner then
 					vehicle = v
+					print("esta es el value.Hash: " .. v.Hash)
 					break
 				end
 			end

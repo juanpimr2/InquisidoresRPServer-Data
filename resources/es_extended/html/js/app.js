@@ -68,8 +68,10 @@
 			notif += '+';
 		else
 			notif += '-';
+		
+		notif += count + ' ' + item;
 
-		notif += count + ' ' + item.label;
+		console.log(notif);
 
 		let elem = $('<div>' + notif + '</div>');
 

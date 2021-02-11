@@ -279,6 +279,8 @@ ESX.UI.Menu.IsOpen = function(type, namespace, name)
 end
 
 ESX.UI.ShowInventoryItemNotification = function(add, item, count)
+
+	-- print("el maldito mamaguevo item de mierda es :" ..  json.encode(item))
 	SendNUIMessage({
 		action = 'inventoryNotification',
 		add    = add,
@@ -957,7 +959,6 @@ ESX.ShowInventory = function()
 					end
 				end
 			elseif data1.current.action == 'use' then
-				print(item)
 				TriggerServerEvent('esx:useItem', item)
 			elseif data1.current.action == 'return' then
 				ESX.UI.Menu.CloseAll()
